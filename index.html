@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101b30">
+  <title>Baseball by Ukubot</title>
+  <link rel="stylesheet" href="web/style.css">
+</head>
+<body>
+  <main id="game-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">U</div>
+        <div>
+          <h1>BASEBALL <span>BY UKUBOT</span></h1>
+          <p>STEP UP TO THE PLATE</p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button id="sound-btn" class="small-button" aria-label="Toggle sound">SOUND: OFF</button>
+        <button id="reset-btn" class="small-button">NEW GAME</button>
+      </div>
+    </header>
+
+    <section class="scoreboard" aria-label="Scoreboard">
+      <div class="team-block home-team">
+        <span class="team-label">HOME</span>
+        <strong id="home-score">0</strong>
+      </div>
+      <div class="inning-block">
+        <span id="inning-label">BOTTOM 1</span>
+        <div class="outs" id="outs-display">
+          <i></i><i></i><i></i>
+        </div>
+        <small>OUTS</small>
+      </div>
+      <div class="team-block away-team">
+        <span class="team-label">AWAY</span>
+        <strong id="away-score">0</strong>
+      </div>
+      <div class="count-block">
+        <div><span>B</span><b id="balls">0</b></div>
+        <div><span>S</span><b id="strikes">0</b></div>
+      </div>
+    </section>
+
+    <section class="field-frame">
+      <canvas id="game-canvas" width="960" height="600" aria-label="Baseball game. Click Swing to hit the pitch."></canvas>
+      <div class="game-message" id="game-message">
+        <span class="message-kicker">WELCOME TO THE BALLPARK</span>
+        <h2>YOUR AT-BAT STARTS NOW</h2>
+        <p>Watch the pitch. Time your swing. Send it deep.</p>
+        <button id="start-btn" class="primary-button">PLAY BALL</button>
+      </div>
+      <div class="pitch-hud" id="pitch-hud">
+        <span class="live-dot"></span>
+        <span id="pitch-status">READY FOR THE PITCH</span>
+      </div>
+      <div class="field-corner">U K B • EST. 2026</div>
+    </section>
+
+    <section class="game-controls">
+      <div class="control-copy">
+        <span class="eyebrow">AT THE PLATE</span>
+        <h2 id="result-title">Ready, batter?</h2>
+        <p id="result-text">Wait for the pitcher, then swing at the right moment.</p>
+      </div>
+      <div class="action-buttons">
+        <button id="swing-btn" class="swing-button" disabled>
+          <span class="swing-icon">↗</span>
+          <span>SWING</span>
+          <small>SPACE / CLICK</small>
+        </button>
+        <button id="pitch-btn" class="secondary-button" disabled>THROW NEXT PITCH</button>
+      </div>
+    </section>
+
+    <section class="stats-row">
+      <div class="stat-card"><span>HITS</span><strong id="hits">0</strong></div>
+      <div class="stat-card"><span>HOME RUNS</span><strong id="home-runs">0</strong></div>
+      <div class="stat-card"><span>RUNS BATTED IN</span><strong id="rbi">0</strong></div>
+      <div class="stat-card"><span>LAST PLAY</span><strong id="last-play">—</strong></div>
+    </section>
+
+    <footer>
+      <span>BASEBALL BY UKUBOT</span>
+      <span>BUILT FOR THE LOVE OF THE GAME</span>
+    </footer>
+  </main>
+  <script src="web/game.js"></script>
+</body>
+</html>
