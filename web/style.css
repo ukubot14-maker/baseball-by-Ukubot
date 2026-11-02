@@ -707,3 +707,126 @@ body {
     font-size: 11px;
   }
 }
+
+/* ===== HOMEPAGE ===== */
+
+#homeScreen {
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 25px;
+  color: white;
+  background:
+    linear-gradient(#06162caa, #06162cdd),
+    repeating-linear-gradient(0deg, #173b32 0px, #173b32 3px, #194332 3px, #194332 6px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: Arial, sans-serif;
+}
+
+#homeScreen[hidden],
+#gameScreen[hidden] {
+  display: none !important;
+}
+
+.home-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.home-logo {
+  color: #edbd54;
+}
+
+.home-version {
+  font-size: 10px;
+  color: #b8c8d7;
+}
+
+.home-content {
+  text-align: center;
+  padding: 50px 10px;
+}
+
+.home-tag {
+  color: #edbd54;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+
+.home-content h1 {
+  font-size: clamp(48px, 10vw, 95px);
+  line-height: .85;
+  font-weight: 1000;
+  font-style: italic;
+  margin: 22px 0;
+  text-shadow: 5px 5px #0008;
+}
+
+.home-content h1 span {
+  color: #edbd54;
+}
+
+.home-content p {
+  color: #d0d9e2;
+  font-size: 15px;
+  margin-bottom: 35px;
+}
+
+.home-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 300px;
+  margin: auto;
+}
+
+.home-buttons button {
+  min-height: 55px;
+  border: 2px solid #edbd54;
+  border-radius: 9px;
+  background: #edbd54;
+  color: #10243b;
+  font-size: 15px;
+  font-weight: 1000;
+  letter-spacing: 1px;
+}
+
+.home-buttons button + button {
+  background: #10243b;
+  color: white;
+  border-color: #71869e;
+}
+
+.home-buttons button:active {
+  transform: scale(.97);
+}
+
+.home-footer {
+  margin-top: 35px;
+  color: #9eafbd;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.home-bottom {
+  text-align: center;
+  color: #71869e;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 500px) {
+  #homeScreen {
+    padding: 18px;
+  }
+
+  .home-content h1 {
+    font-size: 53px;
+  }
+}
