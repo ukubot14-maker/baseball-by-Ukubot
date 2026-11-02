@@ -110,7 +110,20 @@ function drawBatter(){
 function drawCatcher(){ellipse(500,573,18,5,"#12291d66");line(488,546,484,570,"#20384f",11);line(512,546,516,570,"#20384f",11);rounded(483,513,34,40,12,"#183e62");ellipse(500,505,15,16,"#c88e6e");ellipse(500,505,17,18,"#263d53");line(487,506,513,506,"#c5d0d7",3);rounded(488,520,24,8,3,"#b9c3c8")}
 function drawUmpire(){rounded(470,514,23,40,8,"#182b3f");ellipse(481,505,12,13,"#bf896a");ellipse(481,504,13,14,"#202b37");line(473,505,489,505,"#b8c4cb",2);line(471,520,463,546,"#182b3f",7);line(492,520,499,545,"#182b3f",7)}
 function drawFlight(){let f=state.ballFlight,t=clamp((gameTime-f.start)/f.duration,0,1),z=ease(t),x=lerp(f.x0,f.x1,z),y=lerp(f.y0,f.y1,z)-Math.sin(t*Math.PI)*f.arc,r=lerp(8,3,z);ellipse(x+3,y+5,r+3,r,"#091b1b66");ellipse(x,y,r,r,"#fffdf5")}
-function startBattingPitch(){if(state.phase!=="ready"||!offense())return;state.phase="pitch";state.pitchT=0;state.pitchDuration=1.4+Math.random()*.2;state.pitchX=(Math.random()-.5)*42;state.pitchY=(Math.random()-.5)*28;ui.read.textContent="Pitcher in motion…";ui.marker.style.left="0%"}
+function startBattingPitch() {
+  if (state.phase !== "ready" || !offense()) return;
+
+  state.phase = "pitch";
+  state.pitchT = 0;
+  state.pitchDuration = 1.4 + Math.random() * .2;
+
+  // Random pitch location
+  state.pitchX = (Math.random() - .5) * 130;
+  state.pitchY = (Math.random() - .5) * 100;
+
+  ui.read.textContent = "Pitcher in motion…";
+  ui.marker.style.left = "0%";
+}
 function beginWindup(){if(state.phase!=="ready"||offense()||state.gameOver)return;state.phase="windup";state.windupStart=gameTime;state.releaseAt=gameTime+.85;ui.read.textContent=`${state.pitchTypes[state.pitchType]} — get ready to release`;ui.marker.style.left="0%";updateUI()}
 function releasePitch(){if(state.phase!=="windup")return;let delta=Math.abs(gameTime-state.releaseAt);state.releaseQuality=clamp(1-delta/.65,0,1);state.phase="defenseFlight";state.pitchT=0;state.pitchDuration=1.35;state.pitchX=(Math.random()-.5)*65+(1-state.releaseQuality)*35;state.pitchY=(Math.random()-.5)*30;ui.read.textContent=state.releaseQuality>.78?"Excellent release":state.releaseQuality>.45?"Good release":"Missed the release window";updateUI()}
 function swing(){
