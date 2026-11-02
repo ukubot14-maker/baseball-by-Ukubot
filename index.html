@@ -172,9 +172,11 @@
     const gameScreen = document.getElementById("gameScreen");
 
     document.getElementById("playGame").addEventListener("click", () => {
-      homeScreen.hidden = true;
-      gameScreen.hidden = false;
-    });
+  homeScreen.hidden = true;
+  gameScreen.hidden = false;
+  requestAnimationFrame(() => window.resizeBaseballCanvas());
+});
+     
 
     document.getElementById("trainingGame").addEventListener("click", () => {
       homeScreen.hidden = true;
