@@ -18,5 +18,6 @@ Open `index.html` in a modern browser.
 
 ## Notes
 - The game is designed to work offline after the page and files are loaded. Google Fonts are optional; system fonts are used as fallbacks.
-- This is an original, 2D canvas interpretation of a broadcast-style batter's-eye baseball view. It is not affiliated with or a copy of Baseball 9.
+- This is an original, 2D canvas interpretation of a broadcast-style batter's-eye baseball view.
 - "For Austin" appears as small stadium easter eggs.
+- BTW stop reading this AUSTIN.
