@@ -191,5 +191,106 @@ canvas.addEventListener("pointerdown",e=>{e.preventDefault();if(offense())swing(
 window.addEventListener("keydown",e=>{if(e.code==="Space"&&!e.repeat){e.preventDefault();if(state.gameOver)resetGame();else if(offense())swing();else if(state.phase==="windup")releasePitch();else if(state.phase==="ready")beginWindup()}});
 $("helpBtn").onclick=()=>$("modal").classList.remove("hidden");$("closeModal").onclick=$("playBtn").onclick=()=>$("modal").classList.add("hidden");
 $("soundBtn").onclick=()=>{$("soundBtn").style.opacity=$("soundBtn").style.opacity==="0.45"?"1":".45"};
+ 
+// ===== UKUBOT BASEBALL TRAINER MODE =====
+
+let trainerEnabled = true;
+let trainerStep = 0;
+
+const trainer = document.createElement("div");
+trainer.id = "trainerPanel";
+trainer.innerHTML = `
+  <div class="trainer-heading">
+    <span>⚾ COACH UKUBOT</span>
+    <button id="trainerToggle">TRAINER: ON</button>
+  </div>
+  <div id="trainerTitle">Welcome to training!</div>
+  <div id="trainerMessage">
+    I'll help you learn how to hit, pitch, and understand baseball.
+  </div>
+  <div class="trainer-progress">
+    <div id="trainerProgress"></div>
+  </div>
+  <button id="trainerNext">NEXT TIP →</button>
+`;
+document.querySelector(".game-shell").appendChild(trainer);
+
+function trainerTip(title, message, progress = 20) {
+  if (!trainerEnabled) return;
+  $("trainerTitle").textContent = title;
+  $("trainerMessage").textContent = message;
+  $("trainerProgress").style.width = progress + "%";
+  trainer.classList.add("trainer-active");
+}
+
+$("trainerToggle").onclick = () => {
+  trainerEnabled = !trainerEnabled;
+  $("trainerToggle").textContent =
+    trainerEnabled ? "TRAINER: ON" : "TRAINER: OFF";
+  trainer.classList.toggle("trainer-disabled", !trainerEnabled);
+  if (trainerEnabled) {
+    trainerTip("Trainer enabled!", "I'll guide you through the game.");
+  }
+};
+
+$("trainerNext").onclick = () => {
+  trainerStep++;
+  const tips = [
+    ["BATTING", "Wait for the pitch to approach the plate, then swing. Timing is everything.", 20],
+    ["PERFECT TIMING", "Try swinging when the pitch marker is near the middle of the timing bar.", 40],
+    ["BALLS", "A pitch outside the strike zone is a ball. Four balls gives the batter a walk to first base.", 60],
+    ["STRIKES", "Three strikes means the batter is out. A foul ball usually adds a strike, but cannot make strike three.", 80],
+    ["PITCHING", "When pitching, press PITCH to begin your windup, then release near the timing window.", 100],
+    ["THREE OUTS", "After three outs, the teams switch between batting and fielding.", 100],
+    ["NINE INNINGS", "A standard MLB game has nine innings. If the score is tied, extra innings are played.", 100]
+  ];
+  const tip = tips[trainerStep % tips.length];
+  trainerTip(tip[0], tip[1], tip[2]);
+};
+
+// Coach reacts to the current game
+const originalStartBattingPitch = startBattingPitch;
+startBattingPitch = function() {
+  originalStartBattingPitch();
+  trainerTip("WATCH THE PITCH", "The ball is coming toward the plate. Wait for the right moment to swing.", 30);
+};
+
+const originalBeginWindup = beginWindup;
+beginWindup = function() {
+  originalBeginWindup();
+  trainerTip("GET READY TO PITCH", "Watch the timing marker. Release the pitch close to the target window.", 50);
+};
+
+const originalReleasePitch = releasePitch;
+releasePitch = function() {
+  originalReleasePitch();
+  trainerTip(
+    state.releaseQuality > .78 ? "GREAT RELEASE!" : "PITCHING TIP",
+    state.releaseQuality > .78
+      ? "Excellent timing! A good release improves your pitch."
+      : "Try releasing closer to the center of the timing window.",
+    65
+  );
+};
+
+const originalResolveSwing = resolveSwing;
+resolveSwing = function() {
+  const quality = state.swingQuality;
+  originalResolveSwing();
+  if (quality === "PERFECT") {
+    trainerTip("PERFECT SWING!", "Amazing timing! Keep watching the ball and making contact.", 100);
+  } else if (quality === "GOOD") {
+    trainerTip("GOOD CONTACT", "Nice swing! Try to get even closer to perfect timing.", 85);
+  } else if (quality === "EARLY") {
+    trainerTip("TOO EARLY", "You swung before the ball reached the plate. Wait a little longer.", 40);
+  } else if (quality === "LATE") {
+    trainerTip("TOO LATE", "The ball passed the ideal contact point. Try swinging sooner.", 40);
+  } else {
+    trainerTip("KEEP PRACTICING", "Watch the ball's approach and adjust your timing.", 30);
+  }
+};
+
+trainerTip("WELCOME TO TRAINING!", "Start playing! I'll give you tips while you learn the game.", 10);
+
 updateUI();ui.read.textContent="Set your pitch…";announce("PLAY BALL","NINE INNINGS. LET'S GO.",2.4);requestAnimationFrame(frame);
 })();
