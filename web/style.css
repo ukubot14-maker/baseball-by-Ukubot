@@ -830,3 +830,135 @@ body {
     font-size: 53px;
   }
 }
+
+/* HOMEPAGE */
+
+#homeScreen[hidden],
+#gameScreen[hidden] {
+  display: none !important;
+}
+
+#homeScreen {
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+  background:
+    radial-gradient(ellipse at center, #24533f 0%, #102e32 55%, #071a35 100%);
+  font-family: Arial, sans-serif;
+}
+
+.home-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.home-edition {
+  color: #e9b84f;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.home-center {
+  text-align: center;
+  padding: 35px 10px;
+}
+
+.home-ball {
+  font-size: 55px;
+  margin-bottom: 18px;
+}
+
+.home-eyebrow {
+  color: #e9b84f;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+
+.home-center h1 {
+  font-size: clamp(48px, 11vw, 90px);
+  line-height: .9;
+  font-weight: 1000;
+  font-style: italic;
+  text-shadow: 4px 5px #0008;
+  margin: 22px 0;
+}
+
+.home-center h1 span {
+  color: #e9b84f;
+}
+
+.home-center p {
+  color: #d0dce5;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.home-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 310px;
+  margin: auto;
+}
+
+.home-menu button {
+  min-height: 55px;
+  border-radius: 9px;
+  font-weight: 1000;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.home-play {
+  border: 2px solid #e9b84f;
+  background: #e9b84f;
+  color: #10243b;
+}
+
+.home-training {
+  border: 2px solid #8da3b9;
+  background: #10243b;
+  color: white;
+}
+
+.home-menu button:active {
+  transform: scale(.97);
+}
+
+.home-caption {
+  margin-top: 30px;
+  color: #b5c5cf;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.home-footer {
+  display: flex;
+  justify-content: space-between;
+  color: #9aabb8;
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+@media(max-width: 500px) {
+  #homeScreen {
+    padding: 17px;
+  }
+
+  .home-center h1 {
+    font-size: 53px;
+  }
+
+  .home-footer {
+    font-size: 8px;
+  }
+}
