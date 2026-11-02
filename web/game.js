@@ -294,3 +294,30 @@ trainerTip("WELCOME TO TRAINING!", "Start playing! I'll give you tips while you 
 
 updateUI();ui.read.textContent="Set your pitch…";announce("PLAY BALL","NINE INNINGS. LET'S GO.",2.4);requestAnimationFrame(frame);
 })();
+
+// ===== HOMEPAGE NAVIGATION =====
+
+const homeScreen = document.getElementById("homeScreen");
+const gameScreen = document.getElementById("gameScreen");
+
+function enterGame(training = false) {
+  homeScreen.hidden = true;
+  gameScreen.hidden = false;
+
+  if (training && typeof trainerTip === "function") {
+    trainerEnabled = true;
+    trainerTip(
+      "WELCOME TO TRAINING!",
+      "Coach Ukubot will help you learn batting and pitching.",
+      10
+    );
+  }
+}
+
+document.getElementById("playGame").addEventListener("click", () => {
+  enterGame(false);
+});
+
+document.getElementById("trainingGame").addEventListener("click", () => {
+  enterGame(true);
+});
