@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#071a35">
+  <meta name="description" content="Step into the ballpark. Pitch from the mound, time your swing, and lead the Ukubot Nines to victory in Baseball by Ukubot.">
+  <meta property="og:title" content="Baseball by Ukubot">
+  <meta property="og:description" content="The ballpark is yours. Play a quick match or sharpen your skills in training.">
+  <meta property="og:type" content="website">
+  <title>Baseball by Ukubot — The Ballpark Is Yours</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="web/style.css">
+</head>
+<body>
+  <main class="app">
+    <section id="homeScreen" class="home-screen" aria-labelledby="homeTitle">
+      <div class="home-nav">
+        <a class="brand home-brand" href="#home" aria-label="Baseball by Ukubot home">
+          <span class="brand-mark">U</span>
+          <span><span class="brand-name">BASEBALL <b>BY UKUBOT</b></span><span class="brand-sub">THE BALLPARK IS YOURS</span></span>
+        </a>
+        <span class="season-tag"><i></i> NOW PLAYING</span>
+      </div>
+      <div class="hero-layout">
+        <div class="hero-copy">
+          <p class="hero-kicker"><span></span> THE NEXT PITCH IS YOURS</p>
+          <h1 id="homeTitle">STEP UP.<br><em>OWN THE</em><br>GAME.</h1>
+          <p class="hero-description">Take the mound in first-person. Read the batter. Paint the corners. Then bring the same energy to the plate.</p>
+          <div class="home-actions">
+            <button id="playGame" class="home-primary"><span>PLAY BALL</span><b>→</b></button>
+            <button id="trainingGame" class="home-secondary">TRAINING MODE <span>↗</span></button>
+          </div>
+          <div class="hero-footnote"><span class="footnote-icon">⚾</span><span>ARCADE BASEBALL<br><b>BUILT BY UKUBOT STUDIOS</b></span></div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="stadium-glow"></div><div class="hero-ring ring-one"></div><div class="hero-ring ring-two"></div>
+          <div class="hero-ball"><span></span></div>
+          <div class="hero-stadium"><div class="stands"></div><div class="lights"></div><div class="diamond"><i></i></div></div>
+          <div class="hero-art-label label-top">UKUBOT PARK <b>01</b></div>
+          <div class="hero-art-label label-bottom">HOME OF THE NINES <span>✦</span></div>
+          <div class="hero-stat"><b>9</b><span>INNINGS<br>TO GLORY</span></div>
+        </div>
+      </div>
+      <div class="home-bottom">
+        <div class="feature"><span>01</span><div><b>TAKE THE MOUND</b><small>FIRST-PERSON PITCHING</small></div></div>
+        <div class="feature"><span>02</span><div><b>TIME YOUR SWING</b><small>READ IT. DRIVE IT.</small></div></div>
+        <div class="feature"><span>03</span><div><b>PLAY THE NINE</b><small>EVERY OUT MATTERS</small></div></div>
+        <div class="home-copyright">© 2026 UKUBOT STUDIOS <span>•</span> UNOFFICIAL ARCADE BASEBALL</div>
+      </div>
+    </section>
+
+    <section id="gameScreen" class="game-screen" hidden>
+      <header class="topbar">
+        <div class="brand"><div class="brand-mark">U</div><div><div class="brand-name">BASEBALL <span>BY UKUBOT</span></div><div class="brand-sub">THE BALLPARK IS YOURS</div></div></div>
+        <div class="top-actions"><button id="homeBtn" class="back-home">← MENU</button><span class="live-dot"></span><span class="live-label">EXHIBITION GAME</span><button id="soundBtn" class="icon-button" aria-label="Toggle sound">♫</button></div>
+      </header>
+      <section class="game-shell">
+        <div class="stadium-wrap">
+          <canvas id="game" aria-label="Baseball game. Aim and throw from the mound, or tap to swing while batting."></canvas>
+          <div class="canvas-vignette"></div>
+          <div class="field-hud">
+            <div class="inning-chip"><span id="inning">TOP 1</span><small>INNING</small></div>
+            <div class="count-panel">
+              <div class="count-line"><span class="count-label">BALLS</span><div id="balls" class="pips"><i></i><i></i><i></i></div></div>
+              <div class="count-line"><span class="count-label">STRIKES</span><div id="strikes" class="pips strike-pips"><i></i><i></i></div></div>
+              <div class="count-line"><span class="count-label">OUTS</span><div id="outs" class="pips out-pips"><i></i><i></i></div></div>
+            </div>
+            <div class="scoreboard"><div class="score-title">UKUBOT PARK <span>● LIVE</span></div><div class="score-row"><b>UKU</b><strong id="homeScore">0</strong><small>HOME</small></div><div class="score-row"><b>VIS</b><strong id="awayScore">0</strong><small>AWAY</small></div><div class="bases"><i id="base2"></i><i id="base3"></i><i id="base1"></i></div></div>
+          </div>
+          <div id="callout" class="callout" aria-live="polite"><span>PLAY BALL</span><small>GET READY AT THE PLATE</small></div>
+          <div class="bottom-hint"><span class="keycap">SPACE</span> / <span class="keycap">CLICK</span> / <span class="keycap">TAP</span> TO PLAY</div>
+        </div>
+        <section class="control-deck">
+          <div class="at-bat"><div class="eyebrow">NOW PLAYING</div><div class="batter-name" id="roleName">UKUBOT <span>#14</span></div><div class="batter-meta">RHB&nbsp; • &nbsp;POWER CONTACT</div></div>
+          <div class="pitch-status"><div class="eyebrow">PITCH READ</div><div id="pitchRead" class="pitch-read">Waiting for pitcher…</div><div class="timing-track"><div id="timingMarker"></div></div></div>
+          <div class="controls"><button id="swingBtn" class="swing-button"><span class="bat-icon">⚾</span><span id="actionLabel">SWING</span><small id="actionHint">TIME IT</small></button><button id="takeBtn" class="take-button">TAKE PITCH</button></div>
+        </section>
+        <footer class="game-footer"><span>© UKUBOT STUDIOS</span><span>PLAY SMART. SWING BIG.</span><button id="helpBtn">HOW TO PLAY</button></footer>
+      </section>
+      <div id="modal" class="modal hidden"><div class="modal-card"><button id="closeModal" class="close-modal" aria-label="Close">×</button><div class="eyebrow">WELCOME TO UKUBOT PARK</div><h2>Step into the game.</h2><p>When you're pitching, you're looking from the mound toward home plate. Move your pointer or finger over the field to aim. Start your windup, then tap to release. When batting, watch the ball and swing as it reaches the plate.</p><div class="help-grid"><div><b>PITCH</b><span>Tap PITCH, aim, then tap to throw</span></div><div><b>CHANGE PITCH</b><span>Cycle fastball, changeup, and slider</span></div><div><b>SWING</b><span>Tap or press Space to swing</span></div><div><b>TAKE PITCH</b><span>Let the ball pass without swinging</span></div></div><button id="playBtn" class="primary-button">BACK TO THE GAME</button></div></div>
+    </section>
+  </main>
+  <script src="web/game.js"></script>
+</body>
+</html>

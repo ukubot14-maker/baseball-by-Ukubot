@@ -1,0 +1,10 @@
+{
+  "name": "Baseball by Ukubot",
+  "short_name": "Ukubot Baseball",
+  "description": "Arcade baseball from the mound to the plate.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#071a35",
+  "theme_color": "#071a35",
+  "icons": [{"src":"assets/favicon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}

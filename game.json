@@ -1,0 +1,15 @@
+{
+  "title": "Baseball by Ukubot",
+  "studio": "Ukubot Studios",
+  "version": "1.0.0",
+  "release": "Public Web Edition",
+  "platform": "Web",
+  "entry": "index.html",
+  "description": "An original arcade baseball game featuring first-person pitching, timing-based batting, and nine-inning exhibition games.",
+  "controls": {
+    "pitching": "Tap PITCH to begin the windup, move over the field to aim, then tap to release.",
+    "batting": "Tap SWING or press Space when the ball approaches.",
+    "take": "Use TAKE PITCH to let a pitch pass.",
+    "pitchSelection": "Use CHANGE PITCH to cycle pitch types."
+  }
+}
