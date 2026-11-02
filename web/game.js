@@ -146,10 +146,7 @@ function launchBall(kind,who){
  state.ballFlight={start:gameTime,duration:kind==="homer"?1.75:1.1,x0:start.x,y0:start.y,x1:kind==="homer"?Math.random()*500+250:Math.random()*600+200,y1:kind==="homer"?170:Math.random()*330+230,arc:kind==="homer"?210:100};
  state.shake=kind==="homer"?10:5;
  for(let i=0;i<36;i++)particles.push({x:start.x,y:start.y,vx:(Math.random()-.5)*9,vy:(Math.random()-.5)*9,life:.5+Math.random()*.65});
-}line(473,515,469,545,"#182b3f",8);
-line(489,515,493,545,"#182b3f",8);
 }
-
 function drawFlight(){
  const f=state.ballFlight;
  if(!f)return;
