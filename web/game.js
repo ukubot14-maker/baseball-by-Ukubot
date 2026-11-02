@@ -53,7 +53,7 @@ function stadium(){
  poly([[0,200],[1000,200],[1000,340],[0,340]],"#293e4d");
  for(let row=0;row<7;row++)line(0,211+row*17,1000,211+row*17,row%2?"#64716d":"#89908a",5);
  for(let i=0;i<650;i++){let x=(i*97)%1000,y=211+((i*41)%112);ellipse(x,y,1.2,1.4,["#d5c8a7","#a8b7b7","#c68e65","#314b61","#e3e0d3"][i%5])}
- rounded(80,185,840,22,4,"#0c2741");label("UKUBOT PARK",500,201,13,"#e9b84f");label("FOR AUSTIN",165,201,7,"#f4e9c9");label("HOME OF THE UKUBOT NINES",835,201,7,"#f4e9c9");
+ rounded(80,185,840,22,4,"#0c2741");label("DA PARK",500,201,13,"#e9b84f");label("FOR AUSTIN",165,201,7,"#f4e9c9");label("HOME OF THE UKUBOT NINES",835,201,7,"#f4e9c9");
  line(82,82,82,211,"#e6dfc9",5);line(918,82,918,211,"#e6dfc9",5);
  poly([[0,315],[1000,315],[1000,620],[0,620]],"#286b4d");
  for(let i=0;i<10;i++){let x=i*115-35;poly([[x,315],[x+58,315],[x+180,620],[x+80,620]],i%2?"#347d59":"#2d744f")}
@@ -62,7 +62,7 @@ function stadium(){
  ellipse(500,360,47,17,"#bd8c5e");rounded(493,356,14,3,1,"#f2e8d4");
  [[500,350],[668,445],[500,548],[332,445]].forEach(([x,y])=>{ctx.save();ctx.translate(x,y);ctx.rotate(Math.PI/4);rounded(-5,-5,10,10,1,"#f4f0e5");ctx.restore()});
  poly([[500,570],[510,578],[500,586],[490,578]],"#f3eee1");line(463,556,463,604,"#e6e0d1",2);line(537,556,537,604,"#e6e0d1",2);
- label("FOR AUSTIN",500,613,8,"#f2dcae");
+ label("FOR AUSTIN AND COLIN",500,613,8,"#f2dcae");
  drawFielder(500,345,.54,"#e9e9e4","#c84a43");drawFielder(668,445,.48,"#e9e9e4","#c84a43");drawFielder(332,445,.48,"#e9e9e4","#c84a43");drawFielder(500,493,.57,"#e9e9e4","#c84a43");
  drawPitcher();drawBatter();drawCatcher();drawUmpire();
  if(["pitch","swing","windup","defenseFlight"].includes(state.phase)){
